@@ -1,5 +1,7 @@
 Revision history for Perl extension Text::PSP.
 
+1.010 - Added "force_rebuild" option to Text::PSP->template method
+
 1.000 - Removed taglib handling stubs: I'm not going to implement them
 
 0.056 - Cleaned up error messages and file path reporting

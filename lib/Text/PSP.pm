@@ -3,7 +3,7 @@ package Text::PSP;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '1.000';
+$VERSION = '1.010';
 
 use Carp qw(croak carp);
 use Symbol ();
@@ -23,10 +23,10 @@ sub new {
 }
 
 sub template {
-	croak "Text::PSP template method takes 1 argument" unless @_ == 2;
-	my ($self,$filename) = @_;
+	croak "Text::PSP template method takes 1+ argument" if @_ < 2;
+	my ($self,$filename,%options) = @_;
 	my ($pmfile,$classname) = $self->translate_filename($filename);
-	if ( ( !-f $pmfile ) or  -M _ > -M "$self->{template_root}/$filename" ) {
+	if ( $options{force_rebuild} or ( !-f $pmfile ) or  -M _ > -M "$self->{template_root}/$filename" ) {
 		Symbol::delete_package($classname);
 		$self->write_pmfile($filename,$pmfile,$classname);
 	}
@@ -35,8 +35,8 @@ sub template {
 }
 
 sub find_template {
-	croak "Text::PSP find_template method takes 1 argument" unless @_ == 2;
-	my ($self,$directory) = @_;
+	croak "Text::PSP find_template method takes 1+ argument" if @_ < 2;
+	my ($self,$directory,%options) = @_;
 	$directory =~ s#([^/]+)$## or croak "Cannot find a filename from $directory";
 	my $filename = $1;
 	$directory = $self->normalize_path($directory);
@@ -50,7 +50,7 @@ sub find_template {
 	}
 	croak "Cannot find $filename from directory $directory" unless $found;
 	my ($pmfile,$classname) = $self->translate_filename("$directory/$filename");
-	if ( ( !-f $pmfile ) or  -M _ > -M "$self->{template_root}/$path/$filename" ) {
+	if ( $options{force_rebuild} or ( !-f $pmfile ) or  -M _ > -M "$self->{template_root}/$path/$filename" ) {
 		Symbol::delete_package($classname);
 		$self->write_pmfile($filename,$pmfile,$classname,$directory);
 	}
