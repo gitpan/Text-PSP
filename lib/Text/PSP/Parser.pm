@@ -254,9 +254,12 @@ Text::PSP::Parser - JSP-like parser for Text::PSP
 
 No documentation for this mode yet, better see L<Text::PSP> and L<Text::PSP::Syntax>.
 
-=head1 AUTHOR
+=head1 COPYRIGHT
 
-Joost Diepenmaat, jdiepen@cpan.org
+Copyright 2002 - 2005 Joost Diepenmaat, jdiepen@cpan.org. All rights reserved.
+
+This library is free software; you can redistribute it and/or modify it 
+under the same terms as Perl itself.
 
 =head1 SEE ALSO
 

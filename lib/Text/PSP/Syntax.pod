@@ -105,7 +105,11 @@ website in which you want to include a standard header, and all C<index.psp> tem
 	/section2/header.psp
 	/section2/index.psp	includes /section2/header.psp
 
-=head1 AUTHOR
+=head1 COPYRIGHT
 
-Joost Diepenmaat
+Copyright 2002 - 2005 Joost Diepenmaat, jdiepen@cpan.org. All rights reserved.
+
+This library is free software; you can redistribute it and/or modify it 
+under the same terms as Perl itself.
+
 

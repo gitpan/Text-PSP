@@ -4,7 +4,6 @@ Makefile.PL
 benchmark
 examples/server.cgi
 lib/Text/PSP.pm
-lib/Text/PSP.pod
 lib/Text/PSP/Parser.pm
 lib/Text/PSP/Template.pm
 lib/Text/PSP/Syntax.pod
