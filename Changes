@@ -1,0 +1,26 @@
+Revision history for Perl extension Text::PSP.
+
+1.000 - Removed taglib handling stubs: I'm not going to implement them
+
+0.056 - Cleaned up error messages and file path reporting
+
+0.054 - Added find_template method to Text:PSP
+
+0.053 - Added find file directive
+
+0.052 - Added normalize_path method to parse file paths
+
+0.051 - Changed taglib behaviour
+
+0.05 - Refactored Text::PSP::Parser again, added parse-time expression syntax,
+	changed @_out to @o in parsed templates
+	removed quoting bugs and added some tests for them
+
+0.04 - Refactored Text::PSP::Parser
+
+0.02 - 0.03 - early trial versions
+
+0.01 - Wed Sep 18 12:32:57 2002
+	- original version; created by h2xs 1.20 with options
+		-X -A -v0.01 -n Text::PSP
+
