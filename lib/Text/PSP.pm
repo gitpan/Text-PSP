@@ -1,9 +1,10 @@
 package Text::PSP;
-$VERSION = '1.011';
+$VERSION = '1.012';
 use strict;
 
 use Carp qw(croak carp);
 use Symbol ();
+use File::Path qw(mkpath);
 
 =pod
 
@@ -104,7 +105,7 @@ sub new {
 	croak "No template_root given" unless defined $self->{template_root};
         unless (-d $self->{workdir}) {
             if ($self->{create_workdir}) {
-                mkdir $self->{workdir} or croak "Can't create workdir '$self->{workdir}': $!"
+                mkpath $self->{workdir} or croak "Can't create workdir '$self->{workdir}': $!"
             }
             else {
     	        croak "Workdir $self->{workdir} does not exist" unless (-d $self->{workdir});

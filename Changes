@@ -1,5 +1,11 @@
 Revision history for Perl extension Text::PSP.
 
+10012 - Fixed "create_workdir" option to create paths (this caused
+        make test to fail in 1.011 if there wasn't a tmp directory
+        in the current working directory)
+
+        Fixed =head1 NAME header for the syntax manual
+
 1.011 - Added "create_workdir" option
 
 1.010 - Added "force_rebuild" option to Text::PSP->template method

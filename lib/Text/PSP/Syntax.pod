@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-The Text::PSP::Syntax manual.
+Text::PSP::Syntax - The Text::PSP template syntax manual.
 
 =head1 INTRODUCTION
 
