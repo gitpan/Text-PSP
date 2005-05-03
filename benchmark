@@ -48,10 +48,9 @@ for (@pspfiles) {
 my $results = timethese ( $times,
 {
 	'Not cached' => sub {
-		delete @INC{@pmfiles};
 		unlink @pmfiles;
 		for (@pspfiles) {
-			$t= $engine->template($_);
+			$t= $engine->template($_, force_reload => 1);
 		}
 	},
 	'Cached on disk' => sub {

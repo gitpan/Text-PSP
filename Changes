@@ -1,6 +1,10 @@
 Revision history for Perl extension Text::PSP.
 
-10012 - Fixed "create_workdir" option to create paths (this caused
+1.013 - Fixed force_reload option to remove generated template 
+        modules from %INC, as per Ticket #12492
+        https://rt.cpan.org/Ticket/Display.html?id=12492
+
+1.012 - Fixed "create_workdir" option to create paths (this caused
         make test to fail in 1.011 if there wasn't a tmp directory
         in the current working directory)
 

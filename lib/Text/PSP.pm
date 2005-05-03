@@ -1,9 +1,8 @@
 package Text::PSP;
-$VERSION = '1.012';
+$VERSION = '1.013';
 use strict;
 
 use Carp qw(croak carp);
-use Symbol ();
 use File::Path qw(mkpath);
 
 =pod
@@ -140,7 +139,7 @@ sub template {
 	my ($self,$filename,%options) = @_;
 	my ($pmfile,$classname) = $self->translate_filename($filename);
 	if ( $options{force_rebuild} or ( !-f $pmfile ) or  -M _ > -M "$self->{template_root}/$filename" ) {
-		Symbol::delete_package($classname);
+		delete $INC{ $pmfile };
 		$self->write_pmfile($filename,$pmfile,$classname);
 	}
 	require $pmfile;
@@ -176,7 +175,7 @@ sub find_template {
 	croak "Cannot find $filename from directory $directory" unless $found;
 	my ($pmfile,$classname) = $self->translate_filename("$directory/$filename");
 	if ( $options{force_rebuild} or ( !-f $pmfile ) or  -M _ > -M "$self->{template_root}/$path/$filename" ) {
-		Symbol::delete_package($classname);
+		delete $INC{ $pmfile };
 		$self->write_pmfile($filename,$pmfile,$classname,$directory);
 	}
 	require $pmfile;
@@ -283,6 +282,11 @@ Copyright 2002 - 2005 Joost Diepenmaat, jdiepen@cpan.org. All rights reserved.
 
 This library is free software; you can redistribute it and/or modify it 
 under the same terms as Perl itself.
+
+=head1 THANKS TO
+
+Christian Hansen for supplying a patch to make the force_reload option work
+under mod_perl.
 
 =head1 SEE ALSO
 
